@@ -37,9 +37,14 @@ Route::post('/text', function()
  	try {
 	  	// Use the Twilio REST API client to send a text message
 	  	$m = $client->account->messages->create(
-	    	$_ENV['TWILIO_NUMBER'], // the text will be sent from your Twilio number
-	    	$number, // the phone number the text will be sent to
-	    	$message // the body of the text message
+	  		array( 
+				'To' => $number, 
+				'From' =>  $_ENV['TWILIO_NUMBER'], 
+				'Body' => $message,   
+			)
+	    	// $_ENV['TWILIO_NUMBER'], // the text will be sent from your Twilio number
+	    	// $number, // the phone number the text will be sent to
+	    	// $message // the body of the text message
 	  	);
 	}catch(Services_Twilio_RestException $e) {
     	// Return and render the exception object, or handle the error as needed
