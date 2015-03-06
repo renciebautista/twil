@@ -28,7 +28,7 @@ Route::get('/', function()
 Route::post('/text', function()
 {
   	// Get form inputs
-  	$number = Input::get('number');
+  	$number = Input::get('phoneNumber');
   	$message = Input::get('message');
  
   	// Create an authenticated client for the Twilio API
